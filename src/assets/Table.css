@@ -16,7 +16,7 @@
   background-image: linear-gradient(#d7448e, #f4825f);
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Change to left alignment */
+  align-items: flex-start;
   justify-content: flex-start;
   padding: 1.5rem;
   border: 1px solid transparent;
@@ -34,8 +34,8 @@
   font-weight: bold;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between; /* Add this line */
-  padding: 10px; /* Reduce the left padding */
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .icon-container {
@@ -44,14 +44,28 @@
 
 .custom-table td {
   display: flex;
-  justify-content: space-between; /* Öğeleri sağa doğru hizalar */
+  width: 440px;
+  justify-content: space-between;
   align-items: center;
   font-size: large;
 }
 
+.custom-table-body {
+  overflow-y: scroll;
+  height: 400px;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+}
+.custom-table-body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
 .btn-container {
   display: flex;
-  flex-direction: row; /* Öğelerin dikey sıralanmasını engellemek için */
+  flex-direction: row;
 }
 
 .btn {
@@ -69,7 +83,7 @@
 }
 
 .icon {
-  padding-left: 61px;
+  padding-left: 65px;
 }
 
 .crossed-out {
