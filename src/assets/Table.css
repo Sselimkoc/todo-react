@@ -1,0 +1,83 @@
+.table-container {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgb(160, 46, 160), rgb(58, 156, 183));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.custom-table {
+  max-width: 500px;
+  max-height: 500px;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(#d7448e, #f4825f);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Change to left alignment */
+  justify-content: flex-start;
+  padding: 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  border-collapse: collapse;
+}
+
+.custom-table-head {
+  background-color: transparent;
+  color: #13284bff;
+  width: 400px;
+  padding: 210px;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between; /* Add this line */
+  padding: 10px; /* Reduce the left padding */
+}
+
+.icon-container {
+  padding-left: 150px;
+}
+
+.custom-table td {
+  display: flex;
+  justify-content: space-between; /* Öğeleri sağa doğru hizalar */
+  align-items: center;
+  font-size: large;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row; /* Öğelerin dikey sıralanmasını engellemek için */
+}
+
+.btn {
+  padding: 15px;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  width: 300px;
+  padding-left: 100px;
+}
+
+.icon {
+  padding-left: 61px;
+}
+
+.crossed-out {
+  text-decoration: line-through;
+  text-align: left;
+  margin-left: 10px;
+}
+.notcrossed {
+  text-align: start;
+  margin-left: 10px;
+}
