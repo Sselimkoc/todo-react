@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "./assets/Table.css";
+import "../assets/Table.css";
 import { SlCalender } from "react-icons/sl";
 import { useNavigate, useParams } from "react-router-dom";
 import { TiTickOutline } from "react-icons/ti";
 import { LiaTelegram } from "react-icons/lia";
-import Popup from "./components/Popup";
+import Popup from "./Popup";
+import { TiArrowBackOutline } from "react-icons/ti";
 
 function Table(props) {
   const data = props.data;
@@ -20,7 +21,7 @@ function Table(props) {
 
   const changeText = (index) => {
     setClickedIndex(index);
-    setIsDone(true);
+    setIsDone(!isDone);
 
     setTimeout(() => {
       setClickedIndex(-1);
@@ -54,20 +55,22 @@ function Table(props) {
                 >
                   {i + 1}. {row[1]}
                 </span>
+
                 <div className="btn-container">
                   <div className="btn">
-                    <TiTickOutline
-                      onClick={() => changeText(i)}
-                      size={30}
-                      color="#13284bff"
-                    />
+                    {i === clickedIndex && isDone ? (
+                      <TiArrowBackOutline
+                        onClick={() => changeText(i)}
+                        size={30}
+                        className="crossed-out-div"
+                      ></TiArrowBackOutline>
+                    ) : (
+                      <TiTickOutline onClick={() => changeText(i)} size={30} />
+                    )}
                   </div>
+
                   <div className="btn">
-                    <LiaTelegram
-                      onClick={() => setPopUpbool(true)}
-                      size={25}
-                      color="#13284bff"
-                    />
+                    <LiaTelegram onClick={() => setPopUpbool(true)} size={25} />
                   </div>
                 </div>
               </td>

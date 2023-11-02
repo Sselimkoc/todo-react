@@ -1,4 +1,4 @@
-import Table from "../Table.js";
+import Table from "../components/Table.js";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
