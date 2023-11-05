@@ -6,13 +6,14 @@ import { TiTickOutline } from "react-icons/ti";
 import { LiaTelegram } from "react-icons/lia";
 import Popup from "./Popup";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { CgFileAdd } from "react-icons/cg";
 
 function Table(props) {
   const data = props.data;
   const { name, id } = useParams();
-  const [isDone, setIsDone] = useState(true);
+  const [isDone, setIsDone] = useState(false);
   const [clickedIndex, setClickedIndex] = useState(-1);
-  const [popUpBool, setPopUpbool] = useState(false);
+  const [popUpBool, setPopUpbool] = useState("");
   const navigate = useNavigate();
 
   const showMissions = () => {
@@ -36,6 +37,11 @@ function Table(props) {
           <tr>
             <th className="custom-table-head">
               <div className="title-container">
+                <CgFileAdd
+                  size={43}
+                  color="#13284bff"
+                  onClick={() => setPopUpbool("task")}
+                ></CgFileAdd>
                 <div className="title">Görevler</div>
                 <div onClick={showMissions} className="icon">
                   <SlCalender size={43} color="#13284bff" />
@@ -70,7 +76,10 @@ function Table(props) {
                   </div>
 
                   <div className="btn">
-                    <LiaTelegram onClick={() => setPopUpbool(true)} size={25} />
+                    <LiaTelegram
+                      onClick={() => setPopUpbool("send")}
+                      size={25}
+                    />
                   </div>
                 </div>
               </td>
@@ -78,9 +87,7 @@ function Table(props) {
           ))}
         </tbody>
       </table>
-      <Popup trigger={popUpBool} setTrigger={setPopUpbool}>
-        {name}
-      </Popup>
+      <Popup trigger={popUpBool} setTrigger={setPopUpbool}></Popup>
     </div>
   );
 }

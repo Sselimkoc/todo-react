@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import userData from "../UserData/Data";
+import UseGetUsers from "../hooks/UseGetUsers";
 
-function UserButton(authname) {
-  console.log("authname", authname);
-  const users = userData;
-  const filteredUsers = users.filter((user) => user.id !== authname);
+function UserButton() {
+  const { users } = UseGetUsers();
   const navigate = useNavigate();
-
   const selectUser = (user) => {
     login(user);
   };
@@ -18,7 +15,7 @@ function UserButton(authname) {
 
   return (
     <div>
-      {filteredUsers.map((user) => (
+      {users.map((user) => (
         <div
           key={user.id}
           className="user-btn"

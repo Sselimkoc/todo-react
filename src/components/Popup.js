@@ -1,34 +1,27 @@
 import React from "react";
 import "../assets/Popup.css";
-import userData from "../UserData/Data";
 import { AiFillCloseSquare } from "react-icons/ai";
+import { SendPopUp } from "./SendPopUp";
+import Task from "./Task";
 
 function Popup(props) {
-  const sendUser = props.children;
-  console.log("sendUser", sendUser);
-  console.log("userData", userData);
-
+  const check = () => {
+    switch (props.trigger) {
+      case "send":
+        return <SendPopUp></SendPopUp>;
+      case "task":
+        return <Task></Task>;
+      default:
+        return <h1>No project match</h1>;
+    }
+  };
   return props.trigger ? (
     <div className="popup">
       <div className="popup-inner">
-        <div className="gif-container">
-          <img
-            src="https://media.tenor.com/-iIR7TukOEQAAAAd/zenci-göt.gif"
-            alt="GIF Resim"
-          />
-        </div>
-        <button onClick={() => props.setTrigger(false)} className="popup-close">
+        <button onClick={() => props.setTrigger("")} className="popup-close">
           <AiFillCloseSquare className="btn-exit" size={25} />
         </button>
-        <div className="user-btn-pop-ct">
-          {userData.map((user) => (
-            <div key={user.name}>
-              {user.name !== sendUser ? (
-                <button className="user-btn-pop">{user.name}</button>
-              ) : null}
-            </div>
-          ))}
-        </div>
+        <div>{check()}</div>
       </div>
     </div>
   ) : (

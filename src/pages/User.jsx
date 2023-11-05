@@ -14,7 +14,7 @@ function User() {
       profilePhoto: sign.user.photoURL,
       isAuth: true,
     };
-    localStorage.setItem("auth", JSON.stringify(authInfo));
+    localStorage.setItem("Auth", JSON.stringify(authInfo));
     setIsLoggin(authInfo.name);
   };
 
