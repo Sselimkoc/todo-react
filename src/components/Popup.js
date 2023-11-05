@@ -15,18 +15,22 @@ function Popup(props) {
         return <h1>No project match</h1>;
     }
   };
+
+  const closePopup = () => {
+    props.setTrigger("");
+    // props.reRenderComponent(5);
+  };
+
   return props.trigger ? (
     <div className="popup">
       <div className="popup-inner">
-        <button onClick={() => props.setTrigger("")} className="popup-close">
+        <button onClick={closePopup} className="popup-close">
           <AiFillCloseSquare className="btn-exit" size={25} />
         </button>
         <div>{check()}</div>
       </div>
     </div>
-  ) : (
-    ""
-  );
+  ) : null;
 }
 
 export default Popup;

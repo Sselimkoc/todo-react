@@ -7,23 +7,29 @@ import { LiaTelegram } from "react-icons/lia";
 import Popup from "./Popup";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { CgFileAdd } from "react-icons/cg";
-
+import useGetTodos from "../hooks/useGetTodos";
+import useDeleteFruit from "../hooks/UseDeleteTodo";
 function Table(props) {
+  const { deleteTodo } = useDeleteFruit();
+  const { todos } = useGetTodos();
+  console.log("todos", todos);
   const data = props.data;
+
   const { name, id } = useParams();
   const [isDone, setIsDone] = useState(false);
   const [clickedIndex, setClickedIndex] = useState(-1);
   const [popUpBool, setPopUpbool] = useState("");
   const navigate = useNavigate();
-
   const showMissions = () => {
     navigate(`/${name}/${id}/new`);
   };
 
+  const removeTodo = (taskID) => {
+    deleteTodo(taskID);
+  };
   const changeText = (index) => {
     setClickedIndex(index);
     setIsDone(!isDone);
-
     setTimeout(() => {
       setClickedIndex(-1);
       setIsDone(false);
@@ -37,21 +43,22 @@ function Table(props) {
           <tr>
             <th className="custom-table-head">
               <div className="title-container">
+                <div onClick={showMissions}>
+                  <SlCalender size={43} color="#13284bff" />
+                </div>
+                <div className="title">Görevler</div>
                 <CgFileAdd
-                  size={43}
+                  className="icon"
+                  size={48}
                   color="#13284bff"
                   onClick={() => setPopUpbool("task")}
                 ></CgFileAdd>
-                <div className="title">Görevler</div>
-                <div onClick={showMissions} className="icon">
-                  <SlCalender size={43} color="#13284bff" />
-                </div>
               </div>
             </th>
           </tr>
         </thead>
         <tbody className="custom-table-body">
-          {data?.map((row, i) => (
+          {todos?.map((row, i) => (
             <tr key={i}>
               <td>
                 <span
@@ -59,7 +66,7 @@ function Table(props) {
                     i === clickedIndex && isDone ? "crossed-out" : "notcrossed"
                   }
                 >
-                  {i + 1}. {row[1]}
+                  {i + 1}. {row.task}
                 </span>
 
                 <div className="btn-container">

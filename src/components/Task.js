@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 import useCreateToDo from "../hooks/useCreateToDo";
-
+import { MdAddBox } from "react-icons/md";
+import "../assets/task.css";
 export default function Task() {
   const [taskName, setTaskName] = useState("");
-  const { createToDo } = useCreateToDo(); //sürekli render olmasını nasıl engellerım
+  const { createToDo } = useCreateToDo();
   const handleTaskNameChange = (e) => {
-    e.preventDefault();
     setTaskName(e.target.value);
   };
+
   const handleAddTask = () => {
-    createToDo(taskName);
-    setTaskName("");
+    if (taskName) {
+      createToDo(taskName);
+      setTaskName("");
+    }
   };
+
   return (
-    <>
+    <div className="task-container">
       <input
+        className="task-input"
         placeholder="Görev ekleyin..."
         required
         type="text"
         value={taskName}
         onChange={handleTaskNameChange}
       />
-      <button onClick={handleAddTask}>add</button>
-    </>
+      <button className="add-button" onClick={handleAddTask}>
+        <MdAddBox className="add-icon" />
+      </button>
+    </div>
   );
 }
