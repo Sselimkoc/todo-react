@@ -9,7 +9,6 @@ function UseGetUsers() {
 
   useEffect(() => {
     const todosRef = ref(database, "Görevler/Selim");
-
     const todoListener = onValue(todosRef, (snapshot) => {
       if (snapshot.exists()) {
         const todoData = snapshot.val();

@@ -58,40 +58,47 @@ function Table(props) {
           </tr>
         </thead>
         <tbody className="custom-table-body">
-          {todos?.map((row, i) => (
-            <tr key={i}>
-              <td>
-                <span
-                  className={
-                    i === clickedIndex && isDone ? "crossed-out" : "notcrossed"
-                  }
-                >
-                  {i + 1}. {row.task}
-                </span>
+          {todos
+            ?.filter((element) => !element.isDone)
+            .map((row, i) => (
+              <tr key={i}>
+                <td>
+                  <span
+                    className={
+                      i === clickedIndex && isDone
+                        ? "crossed-out"
+                        : "notcrossed"
+                    }
+                  >
+                    {i + 1}. {row.task}
+                  </span>
 
-                <div className="btn-container">
-                  <div className="btn">
-                    {i === clickedIndex && isDone ? (
-                      <TiArrowBackOutline
-                        onClick={() => changeText(i)}
-                        size={30}
-                        className="crossed-out-div"
-                      ></TiArrowBackOutline>
-                    ) : (
-                      <TiTickOutline onClick={() => changeText(i)} size={30} />
-                    )}
-                  </div>
+                  <div className="btn-container">
+                    <div className="btn">
+                      {i === clickedIndex && isDone ? (
+                        <TiArrowBackOutline
+                          onClick={() => changeText(i)}
+                          size={30}
+                          className="crossed-out-div"
+                        ></TiArrowBackOutline>
+                      ) : (
+                        <TiTickOutline
+                          onClick={() => changeText(i)}
+                          size={30}
+                        />
+                      )}
+                    </div>
 
-                  <div className="btn">
-                    <LiaTelegram
-                      onClick={() => setPopUpbool("send")}
-                      size={25}
-                    />
+                    <div className="btn">
+                      <LiaTelegram
+                        onClick={() => setPopUpbool("send")}
+                        size={25}
+                      />
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-          ))}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
       <Popup trigger={popUpBool} setTrigger={setPopUpbool}></Popup>
