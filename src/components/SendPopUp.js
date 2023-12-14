@@ -8,7 +8,7 @@ export function SendPopUp() {
     <>
       <div className="gif-container">
         <img
-          src="https://media.tenor.com/-iIR7TukOEQAAAAd/zenci-göt.gif"
+          src="#"
           alt="GIF Resim"
         />
       </div>
