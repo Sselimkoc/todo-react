@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ref, remove } from "firebase/database";
 import { database } from "../config/firebase-cf";
 
-const useDeleteFruit = () => {
+const useDeleteTodo = () => {
   const [error, setError] = useState(null);
 
   const deleteTodo = async (taskLocal) => {
@@ -18,4 +18,4 @@ const useDeleteFruit = () => {
   return { deleteTodo, error };
 };
 
-export default useDeleteFruit;
+export default useDeleteTodo;
